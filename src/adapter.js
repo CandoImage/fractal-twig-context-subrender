@@ -128,6 +128,10 @@ class TwigAdapter extends Fractal.Adapter {
 
         function process_context(entity, context) {
             for (let key in context) {
+                // Don't process meta-data keys on non-pristine configs.
+                if (key == '_self' || key == '_target' || key == '_env' || key == '_config') {
+                  continue;
+                }
                 let type = typeof context[key];
                 if (key.startsWith('$')) {
                     // This is a subrender element with custom context. Replaces the whole context object with the rendered

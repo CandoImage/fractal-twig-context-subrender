@@ -1,5 +1,5 @@
 {
-  "_from": "git+https://github.com/das-peter/fractal-twig-context-subrender.git",
+  "_from": "github:CandoImage/fractal-twig-context-subrender",
   "_id": "fractal-twig-context-subrender@1.0.0",
   "_inBundle": false,
   "_integrity": "",
@@ -16,7 +16,7 @@
     "co": "4.6.0",
     "columnify": "1.5.4",
     "escape-string-regexp": "1.0.5",
-    "express": "4.16.4",
+    "express": "4.17.1",
     "globby": "6.1.0",
     "graceful-fs": "4.1.15",
     "gray-matter": "2.1.1",
@@ -26,7 +26,7 @@
     "inquirer": "1.2.3",
     "istextorbinary": "2.5.1",
     "js-beautify": "1.6.14",
-    "js-yaml": "3.12.1",
+    "js-yaml": "3.13.1",
     "klaw": "1.3.1",
     "liftoff": "2.5.0",
     "lodash": "4.17.11",
@@ -52,19 +52,17 @@
   },
   "_requested": {
     "type": "git",
-    "raw": "https://github.com/das-peter/fractal-twig-context-subrender.git",
-    "rawSpec": "https://github.com/das-peter/fractal-twig-context-subrender.git",
-    "saveSpec": "git+https://github.com/das-peter/fractal-twig-context-subrender.git",
-    "fetchSpec": "https://github.com/das-peter/fractal-twig-context-subrender.git",
+    "raw": "github:CandoImage/fractal-twig-context-subrender",
+    "rawSpec": "github:CandoImage/fractal-twig-context-subrender",
+    "saveSpec": "github:CandoImage/fractal-twig-context-subrender",
+    "fetchSpec": null,
     "gitCommittish": null
   },
   "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+    "#DEV:/"
   ],
-  "_resolved": "git+https://github.com/das-peter/fractal-twig-context-subrender.git#939216608eec2ee1d36433bc6031d8ed6318bd4b",
-  "_spec": "https://github.com/das-peter/fractal-twig-context-subrender.git",
-  "_where": "W:\\htdocs\\dobi\\frontend",
+  "_resolved": "github:CandoImage/fractal-twig-context-subrender#bdf808598d9d2ea10b2cecaea039ed41e6c5c0f1",
+  "_spec": "github:CandoImage/fractal-twig-context-subrender",
   "author": {
     "name": "ADYAX TEAM & das-peter"
   },
