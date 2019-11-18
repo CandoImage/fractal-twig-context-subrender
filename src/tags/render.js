@@ -65,7 +65,12 @@ module.exports = function (fractal) {
                     template = file;
                 }
                 else {
-                    template = this.importFile(file);
+                    if (typeof this.importFile !== 'undefined') {
+                      template = this.importFile(file);
+                    }
+                    else if (typeof this.template !== 'undefined' && typeof this.template.importFile !== 'undefined') {
+                      template = this.template.importFile(file);
+                    }
                 }
 
                 return {
