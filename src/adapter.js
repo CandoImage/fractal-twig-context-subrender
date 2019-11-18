@@ -168,7 +168,8 @@ class TwigAdapter extends Fractal.Adapter {
                 rethrow: true,
                 name: item_id,
                 str: entity.content,
-                namespaces: self._config.namespaces || {}
+                namespaces: self._config.namespaces || {},
+                strict_variables: self._config.strict_variables || false
             });
 
             return template.render(context);
