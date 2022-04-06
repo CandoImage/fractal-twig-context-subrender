@@ -205,6 +205,8 @@ class TwigAdapter extends Fractal.Adapter {
                                     for (let sourceDataPropertyName in sourceData) {
                                         if ((overrideExistingData || typeof destinationDataNode[sourceDataPropertyName] === 'undefined') && typeof sourceData[sourceDataPropertyName] !== 'undefined') {
                                             destinationDataNode[sourceDataPropertyName] = sourceData[sourceDataPropertyName];
+                                            // The sub-tree might contain include statements as well so let's process them. Without this sub processing it could stil work if we are lucky with processing order.
+                                            processIncludes(destinationDataNode[sourceDataPropertyName]);
                                         }
                                     }
                                 } else {
@@ -216,6 +218,8 @@ class TwigAdapter extends Fractal.Adapter {
 
                                     if ((overrideExistingData || typeof destinationDataNode[finalDestinationPropertyName] === 'undefined') && (!sourceDataPropertyName || typeof sourceData[sourceDataPropertyName] !== 'undefined')) {
                                         destinationDataNode[finalDestinationPropertyName] = sourceDataPropertyName ? sourceData[sourceDataPropertyName] : sourceData;
+                                        // The sub-tree might contain include statements as well so let's process them. Without this sub processing it could stil work if we are lucky with processing order.
+                                        processIncludes(destinationDataNode[finalDestinationPropertyName]);
                                     }
                                 }
 
@@ -280,8 +284,13 @@ class TwigAdapter extends Fractal.Adapter {
                 }
             }
 
-            // Handling includes 
-            return  processIncludes( context ) ;
+
+            if (config.supportIncludesInTheContextData) {
+                // Handling includes 
+                return processIncludes(context);
+            }else{
+                return context;
+            }
         }
 
         function render_sub_component(item, context) {
@@ -359,7 +368,8 @@ module.exports = function(config) {
     config = _.defaults(config || {}, {
         pristine: false,
         handlePrefix: '@',
-        importContext: false
+        importContext: false,
+        supportIncludesInTheContextData: false,
     });
 
     return {
