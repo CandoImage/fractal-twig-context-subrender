@@ -54,6 +54,9 @@ with the customized properties. Otherwise it will behave as configured using the
 
 ## The `include` statement 
 
+In order to enable this feature you need to set `supportIncludesInTheContextData` to `true` in the configuration.
+<br/><br/>
+
 ### To include all the data from another component and assign it to specific variable
 
 ```yaml
