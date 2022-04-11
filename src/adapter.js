@@ -29,10 +29,35 @@ class TwigAdapter extends Fractal.Adapter {
                     params.data = params.precompiled;
                 } else {
                     let view = isHandle(location) ? self.getView(location) : _.find(self.views, {path: Path.join(source.fullPath, location)});
+                    let y = _.find(self.views, { path: Path.join(source.fullPath, location) })
+
+                    // Trying to find the view by iteration
                     if (!view) {
 
+                        console.log("LOOKING FOR:", location)
+
+                        for (let key in self.views) {
+                            const view = self.views[key]
+
+                            if (view.path.indexOf('forgot-password-form') !== -1){
+                                console.log("VIEW:", JSON.stringify(view.path))
+                            }
+                        }
+
+                        for (let key in self.views) {
+                            const view_ = self.views[key]
+
+                            if (view_.path == location){
+                                console.log("FOUND!")
+                                view = view_;
+                            }
+                        }
+                    }
+
+                    if (!view) {
                         throw new Error(`Template ${location} not found`);
                     }
+
                     params.data = view.content;
                 }
 
@@ -157,6 +182,7 @@ class TwigAdapter extends Fractal.Adapter {
         /* eslint-disable complexity */
         // Goes throught the whole context data tree and turns all includes into a desired data.
         function processIncludes(destinationDataNode) {
+            console.log("PI................4")
             if (typeof destinationDataNode === 'object') {
 
                 for (let propertyName in destinationDataNode) {
